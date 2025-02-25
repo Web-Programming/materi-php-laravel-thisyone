@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .kotak {
+            max-width: 400px;
+            background: rgb(196, 224, 236);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        .font {
+            color: #382f2f;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="kotak">
+        <img src="profile.png" alt="Foto Profil" class="profile-img">
+        <h2 style="color: #f16246;">Sri Wahyuni</h2>
+        <p class="font">NPM: 2024250083</p>
+        <p class="font">Program Studi: Informatika</p>
+        <p class="font">Universitas: Universitas MDP</p>
+        <hr style="margin: 20px 0; border: 1px solid #2b1313;">
+        <p><strong>Email:</strong> sriwahyuni@mhs.mdp.ac.id</p>
+        <p><strong>Instagram:</strong> galeriuni</p>
+    </div>
+</body>
+</html>

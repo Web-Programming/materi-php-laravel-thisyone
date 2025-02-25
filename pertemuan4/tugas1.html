@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaris Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .total-barang {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inventaris Barang</h2>
+        <input type="text" id="nama" placeholder="Nama Barang">
+        <input type="number" id="jumlah" placeholder="Jumlah">
+        <select id="kategori">
+            <option value="Elektronik">Elektronik</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Alat Tulis">Alat Tulis</option>
+            <option value="Peralatan">Peralatan</option>
+        </select>
+        <button onclick="tambahBarang()">Tambah Barang</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Kategori</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="tabel-barang">
+                <tr><td>Komputer</td><td>10</td><td>Elektronik</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Kursi</td><td>5</td><td>Furniture</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Kalkulator</td><td>8</td><td>Elektronik</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Pena</td><td>12</td><td>Alat Tulis</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Sapu</td><td>3</td><td>Peralatan</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Monitor</td><td>15</td><td>Elektronik</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Pensil</td><td>7</td><td>Alat Tulis</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Pel</td><td>9</td><td>Peralatan</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Meja</td><td>20</td><td>Furniture</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+                <tr><td>Komputer</td><td>6</td><td>Elektronik</td><td><button onclick="hapusBarang(this)">Hapus</button></td></tr>
+            </tbody>
+        </table>
+        <div class="total-barang">Total Barang: <span id="total">95</span></div>
+    </div>
+
+    <script>
+        function tambahBarang() {
+            let nama = document.getElementById("nama").value;
+            let jumlah = parseInt(document.getElementById("jumlah").value);
+            let kategori = document.getElementById("kategori").value;
+            if (nama && jumlah && kategori) {
+                let tabel = document.getElementById("tabel-barang");
+                let row = tabel.insertRow();
+                row.innerHTML = `<td>${nama}</td><td>${jumlah}</td><td>${kategori}</td><td><button onclick="hapusBarang(this)">Hapus</button></td>`;
+                updateTotal();
+                document.getElementById("nama").value = "";
+                document.getElementById("jumlah").value = "";
+                document.getElementById("kategori").value = "Elektronik";
+            } else {
+                alert("Harap isi semua kolom!");
+            }
+        }
+        
+        function hapusBarang(button) {
+            let row = button.parentElement.parentElement;
+            row.remove();
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let tabel = document.getElementById("tabel-barang");
+            let total = 0;
+            for (let i = 0; i < tabel.rows.length; i++) {
+                total += parseInt(tabel.rows[i].cells[1].innerText);
+            }
+            document.getElementById("total").innerText = total;
+        }
+    </script>
+</body>
+</html>
